@@ -1,2 +1,2 @@
-# Code-Quiz
+# < Code-Quiz >
 A quiz on code!
