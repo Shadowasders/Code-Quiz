@@ -3,6 +3,10 @@
     font-family: 'Work Sans', sans-serif;
 }
 
+ol {
+    border-bottom: gray 1px solid;
+}
+
 li {
     padding-bottom: 5px;
 }
@@ -35,7 +39,3 @@ li {
     justify-content: center;
 }
 
-/* #quiz {
-    width: 50%;
-
-} */
