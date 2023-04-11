@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Work Sans', sans-serif;
+}
+
+li {
+    padding-bottom: 5px;
+}
+/*Setting nav bar elements to be on oppsite sides of screen*/
+.N-bar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.quizbox {
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+}
+
+.prompt {
+    text-align: center;
+   
+}
+/* centering quiz position */
+.center {
+    position: fixed;
+    top: 30%;
+    left: 30%;
+    border: black 2px solid;
+}
+
+.start {
+    width: 20%;
+    justify-content: center;
+}
+
+/* #quiz {
+    width: 50%;
+
+} */

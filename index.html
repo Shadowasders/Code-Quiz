@@ -6,6 +6,9 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 <link rel="stylesheet" href="./assets/reset.css" />
 <link rel="stylesheet" href="./assets/styles.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
 <title>Coding Quiz!</title>
 </head>
 <main>    
@@ -13,11 +16,11 @@
         <button class="highscores">View high scores</button>
         <div id="timer"></div>
     </nav>
-    <section>
+    <section id="quiz" class="center">
         <div class="quizbox">
-            <button class ="start">Start Quiz</button>
                 <h1 class ="prompt">Coding Quiz Challenge!</h1>
                     <p>Try to answer all the coding questions within the time limit! Keep in mind wrong answers will decrease the timer by 10 seconds!</p>
+                    <button class ="start">Start Quiz</button>
             <ol>
                 <li class="questions"></li>
                 <li class="questions"></li>
