@@ -1,8 +1,4 @@
-var questionSet = document.querySelectorAll('li');
-var question
-
-
-
+var quizContent = document.querySelector(".questionbox");
 var timer = document.querySelector('#timer');
 timer.append('placeholder');
 
