@@ -39,3 +39,6 @@ li {
     justify-content: center;
 }
 
+.goAway {
+    display: none;
+}
