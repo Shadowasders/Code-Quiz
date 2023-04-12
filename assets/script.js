@@ -47,7 +47,10 @@ var questionAnswers = [
 ]
 
 quizStart.addEventListener("click", function(){
-    flavorText.setAttribute("class", "goAway");
-    ruleText.setAttribute("class", "goAway");
+    //testing removing whole box 
+    // quizStart.setAttribute("Class", "goAway");
+    // flavorText.setAttribute("class", "goAway");
+    // ruleText.setAttribute("class", "goAway");
+    quizContent.setAttribute("Class", "goAway");
 });
 
