@@ -9,6 +9,7 @@ ol {
 
 li {
     padding-bottom: 5px;
+    list-style-position: inside;
 }
 /*Setting nav bar elements to be on oppsite sides of screen*/
 .N-bar {
@@ -44,6 +45,10 @@ li {
 
 .goAway {
     display: none;
+}
+
+.hi-header {
+    text-align: center;
 }
 
 /* .questionOptions {

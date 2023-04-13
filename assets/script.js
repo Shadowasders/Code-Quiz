@@ -1,3 +1,7 @@
+//issues: Timer not stopping at 0
+//questions ending not starting setScore function 
+//returning from high score list
+
 var quizContent = document.querySelector("#quiz");
 var flavorText = document.querySelector(".prompt");
 var ruleText = document.querySelector(".rules");
@@ -9,19 +13,13 @@ var scoreEl = document.querySelector('#score');
 var quizStart = document.querySelector(".start");
 var goodEl = document.querySelector("#good");
 var badEl = document.querySelector("#bad");
+var scoreScreenEl = document.querySelector("#scoreinput");
+var topButtonEl = document.querySelector(".highscores");
+var topScoreListEl = document.querySelector("#halloffame");
 var time = 60;
 var timeInterval = 0;
 var userScore = 0;
 var activeQuestion = 0;
-// var rightAnswer = questionAnswers[activeQuestion].answer;
-
-//if (questionAnswers[anwserset].textContent === questionAnswers[currentQuestion].answer)
-
-//on click to change questions currentQuestion.eventListener('click'){
-//          if (questionAnswers){
-//    currentQuestion ++
-//}
-//}
 // setting up questions and answers.
 var questionAnswers = [
     {
@@ -58,7 +56,7 @@ var questionAnswers = [
 function userSelectedRight() {
     console.log('right');
     userScore += 10;
-    scoreEl.textContent = userScore;
+    scoreEl.textContent = "Score: " + userScore;
     goodEl.textContent = "Correct!";
     clearText(goodEl);
     activeQuestion++
@@ -85,29 +83,45 @@ function clearText(el) {
 function setScore() {
     examEl.setAttribute("class", "goAway");
     timeEl.setAttribute("class", "goAway");
-    
+    scoreScreenEl.removeAttribute("class", "goAway");
 }
+
+// function startAgain() {
+//     questionRoulette();
+// }
+
+function highScoreList () {
+    quizContent.setAttribute("class", "goAway");
+    examEl.setAttribute("class", "goAway");
+    scoreScreenEl.setAttribute("class", "goAway");
+    scoreEl.setAttribute("class", "goAway");
+    timeEl.setAttribute("class", "goAway");
+    topButtonEl.textContent = "Back to start";
+    topScoreListEl.removeAttribute("class", "goAway");
+    // topScoresEl.addEventListener("click", questionRoulette);
+}
+
+topButtonEl.addEventListener("click", highScoreList);
+console.log(activeQuestion);
+    console.log(questionAnswers.length);
 
 function questionRoulette() {
-    if(activeQuestion > questionAnswers.length) {
-        // run some other function to prompt user name input
-        function setScore () {
-
-        }
-        // return out of this function
+    if(activeQuestion > questionAnswers.length); {
+        setScore();
+        clearInterval(timeInterval);
     }
-
-    questionOptionsEl.replaceChildren();
-    questionPromptEl.textContent = questionAnswers[activeQuestion].question;
-    for (var i = 0; i < 4; i++) {
-        var answerChoice = questionAnswers[activeQuestion].answerset[i];
-        var answerOption = document.createElement("button");
-        answerOption.setAttribute("class", "questions");
-        answerOption.textContent = answerChoice;
-        questionOptionsEl.append(answerOption);
+        questionOptionsEl.replaceChildren();
+        questionPromptEl.setAttribute("class", "prompt");
+        questionPromptEl.textContent = questionAnswers[activeQuestion].question;
+        for (var i = 0; i < 4; i++) {
+            var answerChoice = questionAnswers[activeQuestion].answerset[i];
+            var answerOption = document.createElement("button");
+            answerOption.setAttribute("class", "questions");
+            answerOption.textContent = answerChoice;
+            questionOptionsEl.append(answerOption);
     }
-    
 }
+
 
 
 questionOptionsEl.addEventListener("click", function (e) {
@@ -117,18 +131,18 @@ questionOptionsEl.addEventListener("click", function (e) {
 })
 
 quizStart.addEventListener("click", function () {
-    //testing removing whole box 
+    //starting quiz on button click
     quizContent.setAttribute("Class", "goAway");
     examEl.removeAttribute("class", "goAway");
     scoreEl.removeAttribute("class", "goAway");
     timeEl.textContent = time + " seconds remaining";
-    // scoreEl.textContent(score)
 
     timeInterval = setInterval(function () {
         time--;
         timeEl.textContent = time + " seconds remaining";
-    }, 1000)
 
+    }, 1000)
+    //starting question loop
     questionRoulette();
 
 });
