@@ -1,10 +1,14 @@
-var quizContent = document.querySelector(".quizbox");
+var quizContent = document.querySelector("#quiz");
 var flavorText = document.querySelector(".prompt");
 var ruleText = document.querySelector(".rules");
-var timer = document.querySelector('#timer');
-timer.append('placeholder');
-var currentQuestion = 0;
+var examEl = document.querySelector('#exam');
+var timeEl = document.querySelector('#timer');
+var questionPromptEl = document.querySelector('.questionPrompt');
+var questionOptions = document.querySelector('.questionOptions');
+var scoreEl = document.querySelector('#score');
 var quizStart = document.querySelector(".start");
+var time = 120;
+var timeInterval = 0;
 
 //if (questionAnswers[anwserset].textContent === questionAnswers[currentQuestion].answer)
 
@@ -44,13 +48,29 @@ var questionAnswers = [
         answerset: ["Curly braces - {}", "Brackets - []", "Parenthesis - () ", "Quotation marks - ''"],
         answer: "Brackets - []"
    },
-]
+];
 
+
+var activeQuestion = 0;
+var rightAnswer = questionAnswers[activeQuestion].answer;
 quizStart.addEventListener("click", function(){
     //testing removing whole box 
-    // quizStart.setAttribute("Class", "goAway");
-    // flavorText.setAttribute("class", "goAway");
-    // ruleText.setAttribute("class", "goAway");
     quizContent.setAttribute("Class", "goAway");
+    examEl.removeAttribute("class", "goAway");
+    timeEl.textContent = time  + " seconds remaining";
+    // scoreEl.textContent(score)
+
+    timeInterval = setInterval( function(){
+        time--;
+        timeEl.textContent = time + " seconds remaining";
+    }, 1000)
+
+   
+    questionPromptEl.textContent = questionAnswers[activeQuestion].question;
+    for (var i = 0; i < questionAnswers[activeQuestion].answerset.length; i++){
+        var answerList = questionAnswers[activeQuestion].answerset[i];
+    }
+
 });
+
 

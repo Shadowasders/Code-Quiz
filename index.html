@@ -14,6 +14,7 @@
 <main>    
     <nav class="N-bar">
         <button class="highscores">View high scores</button>
+        <div id="score"></div>
         <div id="timer"></div>
     </nav>
     <section id="quiz" class="center">
@@ -21,9 +22,14 @@
                 <h1 class ="prompt">Coding Quiz Challenge!</h1>
                     <p class="rules">Try to answer all the coding questions within the time limit! Keep in mind wrong answers will decrease the timer by 10 seconds!</p>
                     <button class ="start">Start Quiz</button>
-            <ol class = "questionbox">
-            </ol>
-            <div id="succFail"></div>
+        </div>
+    </section>
+    <section id = "exam" class = "goAway">
+        <div class = "center">
+            <h2 class = "questionPrompt"></h2>
+            <ul class = "questionOptions"></ul>
+            <div id="good"></div>
+            <div id="bad"></div>
         </div>
     </section>
 <script src="./assets/script.js"></script>

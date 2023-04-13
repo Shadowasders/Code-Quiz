@@ -34,6 +34,10 @@ li {
     border: black 2px solid;
 }
 
+.rules {
+    text-align: center;
+}
+
 .start {
     margin: 0 25%;
 }
