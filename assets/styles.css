@@ -11,6 +11,10 @@ li {
     padding-bottom: 5px;
     list-style-position: inside;
 }
+
+#signup {
+    text-align: center;
+}
 /*Setting nav bar elements to be on oppsite sides of screen*/
 .N-bar {
     display: flex;
@@ -35,12 +39,17 @@ li {
     border: black 2px solid;
 }
 
+.initals {
+    cursor: pointer;
+}
+
 .rules {
     text-align: center;
 }
 
 .start {
     margin: 0 25%;
+    cursor: pointer;
 }
 
 .goAway {
@@ -48,6 +57,10 @@ li {
 }
 
 .hi-header {
+    text-align: center;
+}
+
+.scoreDisplay {
     text-align: center;
 }
 

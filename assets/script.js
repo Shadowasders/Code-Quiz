@@ -1,5 +1,4 @@
 //issues: Timer not stopping at 0
-//questions ending not starting setScore function 
 //returning from high score list
 
 var quizContent = document.querySelector("#quiz");
@@ -16,6 +15,8 @@ var badEl = document.querySelector("#bad");
 var scoreScreenEl = document.querySelector("#scoreinput");
 var topButtonEl = document.querySelector(".highscores");
 var topScoreListEl = document.querySelector("#halloffame");
+var finalScore = document.querySelector('.scoreDisplay');
+var userInt = document.querySelector('.initals');
 var time = 60;
 var timeInterval = 0;
 var userScore = 0;
@@ -59,74 +60,89 @@ function userSelectedRight() {
     scoreEl.textContent = "Score: " + userScore;
     goodEl.textContent = "Correct!";
     clearText(goodEl);
-    activeQuestion++
-    questionRoulette();
 }
-    
+
 
 function userSelectedWrong() {
     console.log('wrong');
     time -= 10;
-    badEl.textContent = "Incorrect!" 
+    badEl.textContent = "Incorrect!"
     clearText(badEl);
-    activeQuestion++
-    questionRoulette();
-    
 }
 
 function clearText(el) {
     setTimeout(function () {
         el.textContent = "";
-    }, 3000);
+    }, 2000);
 }
 
 function setScore() {
     examEl.setAttribute("class", "goAway");
     timeEl.setAttribute("class", "goAway");
     scoreScreenEl.removeAttribute("class", "goAway");
+    topButtonEl.textContent = "Back to start";
+    topButtonEl.addEventListener("click", function(){
+        window.location.reload();
+    })
+    finalScore.textContent = "Your score is " + userScore;
+    var userName = document.getElementById('signup').value;
+    var userInfo = {
+        initals: userName, 
+        score: userScore
+    }
+    console.log(userInfo);
+    localStorage.setItem("players", userInfo);
 }
 
-// function startAgain() {
-//     questionRoulette();
+// function getUserInt () {
+//     localStorage.getItem
 // }
 
-function highScoreList () {
+function highScoreList() {
     quizContent.setAttribute("class", "goAway");
     examEl.setAttribute("class", "goAway");
     scoreScreenEl.setAttribute("class", "goAway");
     scoreEl.setAttribute("class", "goAway");
     timeEl.setAttribute("class", "goAway");
     topButtonEl.textContent = "Back to start";
+    topButtonEl.addEventListener("click", function(){
+        window.location.reload();
+    })
     topScoreListEl.removeAttribute("class", "goAway");
     // topScoresEl.addEventListener("click", questionRoulette);
 }
 
 topButtonEl.addEventListener("click", highScoreList);
-console.log(activeQuestion);
-    console.log(questionAnswers.length);
+
 
 function questionRoulette() {
-    if(activeQuestion > questionAnswers.length); {
+    if (time === 0){
         setScore();
-        clearInterval(timeInterval);
     }
-        questionOptionsEl.replaceChildren();
-        questionPromptEl.setAttribute("class", "prompt");
-        questionPromptEl.textContent = questionAnswers[activeQuestion].question;
-        for (var i = 0; i < 4; i++) {
-            var answerChoice = questionAnswers[activeQuestion].answerset[i];
-            var answerOption = document.createElement("button");
-            answerOption.setAttribute("class", "questions");
-            answerOption.textContent = answerChoice;
-            questionOptionsEl.append(answerOption);
+    questionOptionsEl.replaceChildren();
+    questionPromptEl.setAttribute("class", "prompt");
+    questionPromptEl.textContent = questionAnswers[activeQuestion].question;
+    for (var i = 0; i < 4; i++) {
+        var answerChoice = questionAnswers[activeQuestion].answerset[i];
+        var answerOption = document.createElement("button");
+        answerOption.setAttribute("class", "questions");
+        answerOption.textContent = answerChoice;
+        questionOptionsEl.append(answerOption);
     }
 }
 
 
 
-questionOptionsEl.addEventListener("click", function (e) {
-    if (e.target.matches("button")) {
-        e.target.textContent === questionAnswers[activeQuestion]["answer"] ? userSelectedRight() : userSelectedWrong();
+questionOptionsEl.addEventListener("click", function (event) {
+    if (event.target.matches("button")) {
+        event.target.textContent === questionAnswers[activeQuestion]["answer"] ? userSelectedRight() : userSelectedWrong();
+    }
+    activeQuestion++;
+    if (activeQuestion < questionAnswers.length){
+        questionRoulette();
+    } else {
+        setScore();
+        clearInterval;
     }
 })
 
