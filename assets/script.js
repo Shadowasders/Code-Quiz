@@ -17,10 +17,12 @@ var topButtonEl = document.querySelector(".highscores");
 var topScoreListEl = document.querySelector("#halloffame");
 var finalScore = document.querySelector('.scoreDisplay');
 var userInt = document.querySelector('.initals');
+var userName = document.getElementById('signup').value;
 var time = 60;
 var timeInterval = 0;
 var userScore = 0;
 var activeQuestion = 0;
+
 // setting up questions and answers.
 var questionAnswers = [
     {
@@ -75,6 +77,16 @@ function clearText(el) {
         el.textContent = "";
     }, 2000);
 }
+// Wasn't able to finish this in time, starting code for creating an object with the users initals and score
+// function setInfo() {
+//     var userStorage = [""];
+//     var userInfo = {
+//         initals: userName, 
+//         score: userScore
+//     }
+//    var updatedInfo = userStorage.push(userInfo);
+//    return updatedInfo; 
+// }
 
 function setScore() {
     examEl.setAttribute("class", "goAway");
@@ -85,18 +97,8 @@ function setScore() {
         window.location.reload();
     })
     finalScore.textContent = "Your score is " + userScore;
-    var userName = document.getElementById('signup').value;
-    var userInfo = {
-        initals: userName, 
-        score: userScore
-    }
-    console.log(userInfo);
-    localStorage.setItem("players", userInfo);
+    // userInt.addEventListener("submit",  setInfo);
 }
-
-// function getUserInt () {
-//     localStorage.getItem
-// }
 
 function highScoreList() {
     quizContent.setAttribute("class", "goAway");
@@ -109,7 +111,6 @@ function highScoreList() {
         window.location.reload();
     })
     topScoreListEl.removeAttribute("class", "goAway");
-    // topScoresEl.addEventListener("click", questionRoulette);
 }
 
 topButtonEl.addEventListener("click", highScoreList);
